@@ -34,7 +34,7 @@ import org.json.JSONObject;
 public class TicketMasterAPI {
 	private static final String URL = "https://app.ticketmaster.com/discovery/v2/events.json";
 	private static final String DEFAULT_KEYWORD = ""; // no restriction
-	private static final String API_KEY = "2A7lblyLFYa8OGudnTjsy9UJIP1c8ovc;
+	private static final String API_KEY = "2A7lblyLFYa8OGudnTjsy9UJIP1c8ovc";
 	
 	
 	
@@ -176,7 +176,6 @@ public class TicketMasterAPI {
 			}
 		}
 		return "";
-		
 	}
 	
 	//TODO: fetch imageUrl from event JSONObject
