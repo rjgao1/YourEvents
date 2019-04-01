@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Change method &apos;public void entity.Item.ItemBuilder.setItemId(String itemId)&apos; to &apos;public ItemBuilder setItemId(String itemId)&apos;&#x0A;- Original project: &apos;Jupiter&apos;&#x0A;- Original element: &apos;entity.Item.ItemBuilder.setItemId(...)&apos;&#x0A;- New return type: &apos;ItemBuilder&apos;" delegate="false" deprecate="true" description="Change method &apos;setItemId&apos;" flags="589830" id="org.eclipse.jdt.ui.change.method.signature" input="/src&lt;entity{Item.java[Item[ItemBuilder~setItemId~QString;" name="setItemId" parameter1="String itemId 0 String itemId false" return="ItemBuilder" stamp="1553900023360" version="1.0"/>
-</session>

@@ -23,15 +23,20 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+//import io.github.cdimascio.dotenv.Dotenv;
+
 public class TicketMasterAPI {
 	private static final String URL = "https://app.ticketmaster.com/discovery/v2/events.json";
 	private static final String DEFAULT_KEYWORD = ""; // no restriction
-	private static final String API_KEY = "2A7lblyLFYa8OGudnTjsy9UJIP1c8ovc";
+	private static final String API_KEY = "2A7lblyLFYa8OGudnTjsy9UJIP1c8ovc;
+	
+	
 	
 	/**
 	 * @param lat
@@ -233,7 +238,8 @@ public class TicketMasterAPI {
 		// Houston, TX
 		//tmApi.queryAPI(29.682684, -95.295410);
 		
-		tmApi.queryAPI(29.682684, -95.295410);
+//		tmApi.queryAPI(29.682684, -95.295410);
+//		System.out.println(API_KEY);
 	}
 }
 
