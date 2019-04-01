@@ -29,7 +29,7 @@ public class MySQLTableCreation {
 			sql = "DROP TABLE IF EXISTS items";
 			statement.executeUpdate(sql);
 			
-			sql = "DROP TABLE IF EXISTS user";
+			sql = "DROP TABLE IF EXISTS users";
 			statement.executeUpdate(sql);
 			
 			//Step 3: Create new tables
@@ -70,6 +70,10 @@ public class MySQLTableCreation {
 					+ "FOREIGN KEY (user_id) REFERENCES users(user_id),"
 					+ "FOREIGN KEY (item_id) REFERENCES items(item_id)"
 					+ ")";
+			statement.executeUpdate(sql);
+			
+			//Step 4: insert fake user 1111/3229c1097c00d497a0fd282d586be050
+			sql = "INSERT INTO users VALUES('1111', '3229c1097c00d497a0fd282d586be050', 'John', 'Smith')";
 			statement.executeUpdate(sql);
 			
 			conn.close();
