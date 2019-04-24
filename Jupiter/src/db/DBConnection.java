@@ -53,7 +53,7 @@ public interface DBConnection {
 	 * 		(Nullable)
 	 * @return list of items
 	 */
-	public List<String> searchItems(double lat, double lon, String term);
+	public List<Item> searchItems(double lat, double lon, String term);
 	
 	/** Save item into db
 	 * 
