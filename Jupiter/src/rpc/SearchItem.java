@@ -54,7 +54,7 @@ public class SearchItem extends HttpServlet {
 				array.put(item.toJSONObject());
 			}
 			
-			RpcHelper.writeJsonArray(response, array);
+			RpcHelper.writeJSONArray(response, array);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -40,7 +40,7 @@ public class RecommendItem extends HttpServlet {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		RpcHelper.writeJsonArray(response, array);		
+		RpcHelper.writeJSONArray(response, array);		
 
 	}
 
