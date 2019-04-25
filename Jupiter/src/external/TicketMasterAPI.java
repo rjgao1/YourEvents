@@ -61,7 +61,7 @@ public class TicketMasterAPI {
 		
 		//Build query url
 		//query format: "apikey=YOUR_API_KEY&geopoint=xyz123&keyword=event&radius=50"
-		String query = String.format("apikey=%s&geopoint=%s&keyword=%s&radius=%s", 
+		String query = String.format("apikey=%s&geoPoint=%s&keyword=%s&radius=%s", 
 				API_KEY, geoHash, keyword, 50);
 		String url = URL + "?" + query;
 		

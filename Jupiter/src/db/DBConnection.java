@@ -28,12 +28,19 @@ public interface DBConnection {
 	public void unsetFavoriteItems(String userId, List<String> itemIds);
 	
 	/** 
-	 * Get favorite itemIds for a user.
+	 * Get favorite Items for a user.
 	 * 
 	 * @param userId
-	 * @return itemIds
+	 * @return Set<Item>: a HashSet of favorite items for a user
 	 */
-	public List<String> getFavoriteItems(String userId);
+	public Set<Item> getFavoriteItems(String userId);
+	
+	/**
+	 * Get favorite itemIds for a user.
+	 * @param userId
+	 * @return Set<String>: a HashSet of favorite itemIds for a user
+	 */
+	public Set<String> getFavoriteItemIds(String userId);
 	
 	/** 
 	 * Get categories based on an itemId
