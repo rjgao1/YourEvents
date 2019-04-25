@@ -20,7 +20,7 @@ public interface DBConnection {
 	public void setFavoriteItems(String userId, List<String> itemIds);
 	
 	/**
-	 * Delete the favorite items for a user.
+	 * Unset the favorite items for a user.
 	 * 
 	 * @param userId
 	 * @param itemIds
