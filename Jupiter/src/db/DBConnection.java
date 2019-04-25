@@ -25,7 +25,7 @@ public interface DBConnection {
 	 * @param userId
 	 * @param itemIds
 	 */
-	public void deleteFavoriteItems(String userId, List<String> itemIds);
+	public void unsetFavoriteItems(String userId, List<String> itemIds);
 	
 	/** 
 	 * Get favorite itemIds for a user.
