@@ -39,7 +39,7 @@
     lat = position.coords.latitude;
     lng = position.coords.longitude;
     
-    laodNearbyItems();
+    laodNearbyItems();a
   }
 
   //TODO:
@@ -348,9 +348,9 @@ function changeFavoriteItem(item_id) {
     var itemList = $('item-list');
     itemList.innerHTML = '';
 
-    for (var i = 0; i < items.length; i++) [
+    for (var i = 0; i < items.length; i++) {
       addItem(itemList, items[i]);
-    ]
+    }
   }
 
   /**
