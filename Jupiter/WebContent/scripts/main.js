@@ -254,7 +254,172 @@
     );
   }
 
+/**
+ * API #4 
+ * Toggle favorite (or visited) items
+ * 
+ * @param item_id -
+ *          item business id
+ * 
+ * API endpoint: [POST]/[DELETE] /history/
+ * request JSON data:
+ * {user_id: 1111,
+ *  visited: [list_of_business_ids]}
+ */
+function changeFavoriteItem(item_id) {
+  // Check whether or not this item has been visited
+  var li = $('item-' + item_id);
+  var favIcon = $('fav-icon-' + item_id);
+  var favorite = li.dataset.favorite !== 'true';
 
+  // Request parameters
+  var url = './history';
+  var req = JSON.stringify(
+    {
+      user_id: user_id,
+      favorite: [item_id]
+    }
+  );
+  var method = favorite ? 'POST' : 'DELETE';
+
+  ajax(method, url, req, function(res){
+    var result = JSON.parse(res);
+    if (result.result === 'SUCCESS') {
+      li.dataset.favorite = favorite;
+      favIcon.className = favorite ? 'fa fa-heart' : 'fa fa-heart-o';
+    }
+  });
+
+  //TODO:
+  // -------------------------------------
+  // Create item list
+  // -------------------------------------
+  /**
+   * List items
+   * 
+   * @param items -
+   *          An array of item JSON objects
+   */
+  
+  function listItems(items) {
+    // Clear the current results
+    var itemList = $('item-list');
+    itemList.innerHTML = '';
+
+    for (var i = 0; i < items.length; i++) [
+      addItem(itemList, items[i]);
+    ]
+  }
+
+  /**
+   * Add item to item list
+   * 
+   * @param itemList - 
+   *          the 
+   *          <ul id="item-list">
+   *          tag
+   * @param item - 
+   *          item data JSON object
+   */
+  function addItem(itemList, item) {
+    var item_id = item.item_id;
+
+    // create the <li> tag and specify the id and class attributes
+    var li = $('li', {
+      id: "item-" + item_id,
+      className: item
+    });
+
+    // set the data attributes
+    li.dataset.item_id = item_id;
+    li.dataset.favorite = item.favorite;
+
+    // item image
+    if (item.image_url) {
+      li.appendChild($('img', {
+        src: item.image_url
+      }))
+    } else {
+      li.appendChild($('img', {
+        src: 'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'
+      }))
+    }
+
+    // section
+    var section = $('div', {});
+
+    // title
+    var title = $('a', {
+      href: item.url,
+      target: '_blank',
+      className: 'item-name'
+    });
+    title.innerHTML = item.name;
+    section.appendChild(title);
+
+    // category
+    var category = $('p', {
+      className: 'item-category'
+    })
+    category.innerHTML = 'Categories: ' + item.categories.joint(', ');
+    section.appendChild(category);
+
+    //TODO: might have a problem with showing 3.5 stars
+    // stars
+    var stars = $('div', {
+      className: 'stars'
+    });
+
+    for (var i = 0; i < item.rating; i++) {
+      var star = $('i', {
+        className: 'fa fa-star'
+      })
+      stars.appendChild(star);
+    }
+
+    if (('' + item.rating).match(/\.5$/)) {
+      stars.appendChild($('i', {
+        className: 'fa fa-star-half-o'
+      }));
+    }
+
+    // append stars to section
+    section.appendChild(stars);
+    // append section to <li> tag
+    li.appendChild(section);
+
+    // address
+    var address = $('p', {
+      className: 'item-address'
+    });
+
+    address.innerHTML = item.address.replace(/,/g, '<br/>').replace(/\"/g, '');
+    li.appendChild(address);
+
+    // favorite link
+    var favLink = $('p', {
+      className: 'fav-link'
+    });
+
+    favLink.onclick = function() {
+      changeFavoriteItem(item_id);
+    }
+
+    favLink.appendChild($('i', {
+      id: 'fav-icon-' + item_id,
+      className: item.favorite ? 'fa fa-heart' : 'fa fa-heart-o'
+    }));
+
+    // append favLink to <li>
+    li.appendChild(favLink);
+    // append <li> to itemList
+    itemList.appendChild(li);
+
+  }
+
+
+
+}
 
 
 
