@@ -23,7 +23,49 @@
 
   //TODO:
   function initGeoLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(onPositionUpdated,
+        onLoadPositionFailed, {
+          maximumAge: 60000
+        });
+      showLoadingMsg('Retriving your location...');
+    } else {
+      onLoadPositionFailed();
+    }
+  }
 
+  //Todo:
+  function onPositionUpdated(position) {
+    lat = position.coords.latitude;
+    lng = position.coords.longitude;
+    
+    laodNearbyItems();
+  }
+
+  //TODO:
+  function onLoadPositionFailed() {
+    console.warn('navigator.geolocation is not available');
+    getGeoLocationFromIP();
+  }
+
+  //TODO:
+  function getGeoLocationFromIP() {
+    // Get location from http://ipinfo.io/json
+    var url = 'http://ipinfo.io/json';
+    var req = null;
+    ajax('GET', url, req, 
+      function(res) {
+        var restul = JSON.parse(res);
+        if ('loc' in result) {
+          var loc = result.loc.split(',');
+          lat = loc[0];
+          lng = loc[1];
+        } else {
+          console.warn('Getting location by IP failed');
+        }
+        laodNearbyItems;
+      }
+    );
   }
 
   // ------------------
