@@ -32,6 +32,15 @@ public class RecommendItem extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		// allow access only if session exists
+		HttpSession session = request.getSession(false);
+		if (session == null) {
+			response.setStatus(403);
+			return;
+		}
+
+		String userId = session.getAttribute("user_id").toString;
+		
 		JSONArray array = new JSONArray();
 		
 		try {
@@ -48,6 +57,15 @@ public class RecommendItem extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// allow access only if session exists
+		HttpSession session = request.getSession(false);
+		if (session == null) {
+			response.setStatus(403);
+			return;
+		}
+
+		String userId = session.getAttribute("user_id").toString;
+		
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
