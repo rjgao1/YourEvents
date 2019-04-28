@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +40,7 @@ public class RecommendItem extends HttpServlet {
 			return;
 		}
 
-		String userId = session.getAttribute("user_id").toString;
+		String userId = session.getAttribute("user_id").toString();
 		
 		JSONArray array = new JSONArray();
 		
@@ -64,7 +65,7 @@ public class RecommendItem extends HttpServlet {
 			return;
 		}
 
-		String userId = session.getAttribute("user_id").toString;
+		String userId = session.getAttribute("user_id").toString();
 		
 		// TODO Auto-generated method stub
 		doGet(request, response);

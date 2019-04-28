@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -44,7 +45,7 @@ public class ItemHistory extends HttpServlet {
 			return;
 		}
 
-		String userId = session.getAttribute("user_id").toString;
+		String userId = session.getAttribute("user_id").toString();
 
 		// String userId = request.getParameter("user_id");
 		JSONArray array = new JSONArray();
@@ -82,7 +83,7 @@ public class ItemHistory extends HttpServlet {
 			return;
 		}
 
-		String userId = session.getAttribute("user_id").toString;
+		String userId = session.getAttribute("user_id").toString();
 		
 		DBConnection connection = DBConnectionFactory.getConnection();
 	  	 try {
@@ -115,7 +116,7 @@ public class ItemHistory extends HttpServlet {
 			return;
 		}
 
-		String userId = session.getAttribute("user_id").toString;
+		String userId = session.getAttribute("user_id").toString();
 		
 		DBConnection connection = DBConnectionFactory.getConnection();
 		try {

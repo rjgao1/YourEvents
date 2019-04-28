@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,7 +46,7 @@ public class SearchItem extends HttpServlet {
 			return;
 		}
 
-		String userId = session.getAttribute("user_id").toString;
+		String userId = session.getAttribute("user_id").toString();
 		
 		
 		double lat = Double.parseDouble(request.getParameter("lat"));
@@ -84,7 +85,7 @@ public class SearchItem extends HttpServlet {
 			return;
 		}
 
-		String userId = session.getAttribute("user_id").toString;
+		String userId = session.getAttribute("user_id").toString();
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
