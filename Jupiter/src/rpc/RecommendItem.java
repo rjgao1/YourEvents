@@ -1,6 +1,7 @@
 package rpc;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,10 +14,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import entity.Item;
+import recommendation.GeoRecommendation;
+
 /**
  * Servlet implementation class RecommendItem
  */
-@WebServlet("/Recommendation")
+@WebServlet("/recommendation")
 public class RecommendItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,15 +45,18 @@ public class RecommendItem extends HttpServlet {
 		}
 
 		String userId = session.getAttribute("user_id").toString();
+		// String userId = request.getParameter("user_id");
+		double lat = Double.parseDouble(request.getParameter("lat"));
+		double lon = Double.parseDouble(request.getParameter("lon"));
+		
+		GeoRecommendation recommendation = new GeoRecommendation();
+		List<Item> items = recommendation.recommendItems(userId, lat, lon);
 		
 		JSONArray array = new JSONArray();
-		
-		try {
-			array.put(new JSONObject().put("username", "abcd").put("address", "San Francisco").put("time", "01/01/2017"));
-			array.put(new JSONObject().put("username", "1234").put("address", "San Jose").put("time", "01/02/2017"));
-		} catch (JSONException e) {
-			e.printStackTrace();
+		for (Item item : items) {
+			array.put(item.toJSONObject());
 		}
+		
 		RpcHelper.writeJSONArray(response, array);		
 
 	}
