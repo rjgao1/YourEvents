@@ -106,7 +106,7 @@ public class MySQLConnection implements DBConnection {
 				ItemBuilder builder = new ItemBuilder();
 				
 				while(rs.next()) {
-					builder.setItemId(rs.getString("itemId"));
+					builder.setItemId(rs.getString("item_id"));
 					builder.setName(rs.getString("name"));
 					builder.setAddress(rs.getString("address"));
 					builder.setImageUrl(rs.getString("image_url"));
